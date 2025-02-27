@@ -20,28 +20,43 @@ namespace MultiWindowsForm
         public NewCustomerForm(MainForm form)
         {
             InitializeComponent();
-            
+
             _mainForm = form;
             CustomerCount = 1;
             isEditing = false;
             CurrentCustomerId = -1;
-            
+
         }
 
-        public void ToggleEdit(bool newState) 
+
+
+       
+        public void ToggleEdit(bool newState)
         {
-            isEditing = newState; 
+            isEditing = newState;
         }
-        private void CreateCustomer() {
+        private void CreateCustomer()
+        {
+            
             // validtaion
-            if (!CheckValidity()) { 
-            
-                    
-            
+            if (CheckValidity(txtName))
+            {
+
+                MessageBox.Show("please enter a name");
+                return ;
                 // show an error 
                 // return and try again
             }
-
+            if (CheckValidity(txtEmail))
+            {
+                MessageBox.Show("please enter an email");
+                return;
+            }
+            if (CheckValidity(txtPhoneNumber))
+            {
+                MessageBox.Show("please enter a phone number");
+                return;
+            }
 
             // create a customer and load it with the data from the form
 
@@ -58,24 +73,41 @@ namespace MultiWindowsForm
 
         }
 
-        private bool CheckValidity() {
+        private bool CheckValidity(Control control)
+        {
             // some logic here to validate the various inputs 
 
 
             // return if value
 
-            bool somevalue = true;
-            return somevalue;
-        
-            
+
+
+            return control.Text == "";
         }
 
 
         private void EditCustomer()
         {
+            if (CheckValidity(txtName))
+            {
+
+                MessageBox.Show("please enter a name");
+                return;
+                // show an error 
+                // return and try again
+            }
+            if (CheckValidity(txtEmail))
+            {
+                MessageBox.Show("please enter an email");
+                return;
+            }
+            if (CheckValidity(txtPhoneNumber))
+            {
+                MessageBox.Show("please enter a phone number");
+                return;
+            }
 
 
-            MessageBox.Show("Form is being edited");
             _mainForm.EditCustomer(CurrentCustomerId, new Customer
             {
                 CustomerId = CurrentCustomerId,
@@ -87,6 +119,8 @@ namespace MultiWindowsForm
             CurrentCustomerId = -1;
             ToggleEdit(false);
 
+
+            
         }
         private void BtnSave_Click(object sender, EventArgs e)
         {
@@ -99,19 +133,19 @@ namespace MultiWindowsForm
                 CreateCustomer();
             }
 
-                // validtaion
+            // validtaion
 
-                // create a customer and load it with the data from the form
+            // create a customer and load it with the data from the form
 
-            
-                // close the form if we want to
 
-                Hide();
+            // close the form if we want to
 
-                // clear the new customer form
+            Hide();
 
-                ClearForm();
-            
+            // clear the new customer form
+
+            ClearForm();
+
         }
         private void ClearForm()
         {
@@ -132,6 +166,9 @@ namespace MultiWindowsForm
 
         }
 
-       
+        private void gbCustomer_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 }

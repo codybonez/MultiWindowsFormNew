@@ -58,6 +58,7 @@
             gbCustomer.TabIndex = 0;
             gbCustomer.TabStop = false;
             gbCustomer.Text = "New Customer";
+            gbCustomer.Enter += gbCustomer_Enter;
             // 
             // btnClear
             // 

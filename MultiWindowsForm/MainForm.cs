@@ -30,6 +30,7 @@ namespace MultiWindowsForm
 
         }
 
+     
         public void AddCustomer(Customer customer)
         {
             _customerList.Add(customer);
@@ -46,7 +47,8 @@ namespace MultiWindowsForm
 
             // checking to see if we got a customer to edit
 
-            if (cust != null) {
+            if (cust != null)
+            {
                 // found one, process the customer
 
                 cust.Name = updatedCustomer.Name;
@@ -57,9 +59,10 @@ namespace MultiWindowsForm
         }
 
 
-        public void LoadCustomer(Customer customer) {
+        public void LoadCustomer(Customer customer)
+        {
 
-         
+
         }
         private void btnEdit_Click(object sender, EventArgs e)
         {
@@ -80,11 +83,13 @@ namespace MultiWindowsForm
             _customerform.Show();
         }
 
-       
-       
-    }
- 
+        private void dgvCustomers_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
 
-      
-
+        }
     }
+
+
+
+
+}
